@@ -14,6 +14,8 @@ namespace UsersApi.Mapping
 
             //dto to entities
             CreateMap<UserDto, User>();
+            CreateMap<CreateUserDto, User>();
+            CreateMap<EditUserDto, User>();
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace UsersApi.Dto
 {
-    public class UserDto
+    public class EditUserDto
     {
         public Guid? Id { get; set; }
 
@@ -19,11 +19,7 @@ namespace UsersApi.Dto
         [JsonPropertyName("isAdmin")]
         public bool IsAdmin { get; set; }
 
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-
-
-        public UserDto()
+        public EditUserDto()
         {
         }
     }

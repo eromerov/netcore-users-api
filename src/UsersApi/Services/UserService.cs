@@ -43,7 +43,7 @@ namespace UsersApi.Services
 
         }
 
-        public async Task<UserDto> Save(UserDto dto)
+        public async Task<UserDto> Save(CreateUserDto dto)
         {
             var user = this._mapper.Map<User>(dto);
             user.Id = Guid.NewGuid();
@@ -57,7 +57,7 @@ namespace UsersApi.Services
             return this._mapper.Map<UserDto>(user);
         }
 
-        public async Task<UserDto> Update(UserDto dto)
+        public async Task<UserDto> Update(EditUserDto dto)
         {
             var user = await _db.Users.Where(x => x.Id == dto.Id).FirstOrDefaultAsync();
 
@@ -65,6 +65,7 @@ namespace UsersApi.Services
             {
                 user.Name = dto.Name;
                 user.Email = dto.Email;
+                user.Password = dto.Password;
                 user.IsAdmin = dto.IsAdmin;
                 user.UpdatedAt = DateTime.Now;
 
@@ -72,7 +73,7 @@ namespace UsersApi.Services
                 await _db.SaveChangesAsync();
             }
 
-            return dto;
+            return this._mapper.Map<UserDto>(user);
         }
 
 

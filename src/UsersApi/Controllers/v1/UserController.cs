@@ -35,14 +35,14 @@ namespace UsersApi.Controllers.v1
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(UserDto dto)
+        public async Task<ActionResult> Post(CreateUserDto dto)
         {
             var user = await this._userService.Save(dto);
             return Ok(user);
         }
 
         [HttpPut]
-        public async Task<ActionResult> Put(UserDto dto)
+        public async Task<ActionResult> Put(EditUserDto dto)
         {
             var user = await this._userService.Update(dto);
             return Ok(user);
